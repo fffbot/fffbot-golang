@@ -12,7 +12,7 @@ import (
 	"github.com/turnage/graw"
 	"github.com/turnage/graw/reddit"
 
-	"./html2md"
+	"github.com/fffbot/fffbot/html2md"
 )
 
 func fetchPage(url string) ([]byte, error) {

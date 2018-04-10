@@ -6,7 +6,7 @@ import (
 )
 
 func TestWithCode(t *testing.T) {
-	url := "https://www.factorio.com/blog/post/fff-234"
+	url := "https://www.factorio.com/blog/post/fff-235"
 
 	body, e := fetchPage(url)
 

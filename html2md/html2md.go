@@ -87,10 +87,24 @@ func I() *Rule {
 
 func Code() *Rule {
 	return &Rule{
-		Patterns: []string{"code", "tt", "pre"},
+		Patterns: []string{"code", "tt"},
 		Replacement: func(innerHTML string, attrs []string) string {
 			if len(attrs) > 1 {
 				return "`" + attrs[1] + "`"
+			}
+			return ""
+		},
+	}
+}
+
+func Pre() *Rule {
+	return &Rule{
+		Patterns: []string{"pre"},
+		Replacement: func(innerHTML string, attrs []string) string {
+			if len(attrs) > 1 {
+				lines := strings.Split(attrs[1], "\n")
+				joined := strings.Join(lines, "\n    ");
+				return "\n" + joined + "\n";
 			}
 			return ""
 		},
@@ -342,6 +356,7 @@ func init() {
 	AddRule("b", B())
 	AddRule("br", Br())
 	AddRule("code", Code())
+	AddRule("pre", Pre())
 	AddRule("a", A())
 	AddRule("iframe", Iframe())
 
